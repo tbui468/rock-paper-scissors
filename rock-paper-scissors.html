@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8"/>
+  </head>
+  <body>
+  <script>
+    function computeAIHand() {
+      let items = ["rock", "paper", "scissors"]
+      return items[Math.floor(Math.random() * 3)]
+    }
+    function computeUserHand() {
+      return window.prompt("rock, paper or scissors?", "rock").toLowerCase()
+    }
+
+    function playRound() {
+      let userHand = computeUserHand()
+      let aiHand = computeAIHand()
+      console.log("You chose " + userHand + " and AI chose " + aiHand)
+      switch(aiHand) {
+        case "rock":
+          if(userHand === "rock") return "tie"
+          else if(userHand === "paper") return "You Win!"
+          else if(userHand === "scissors") return "You Lose!"
+          break;
+        case "paper":
+          if(userHand === "rock") return "You Lose!"
+          else if(userHand === "paper") return "Tie"
+          else if(userHand === "scissors") return "You Win!"
+          break;
+        case "scissors":
+          if(userHand === "rock") return "You Win!"
+          else if(userHand === "paper") return "You Lose!"
+          else if(userHand === "scissors") return "Tie" 
+          break;
+      }
+    }
+
+    function playGame() {
+      let result = playRound()
+      console.log(result)
+      let choice = window.prompt("Play again?  y/n", "n")
+
+      if(choice === "y") return true
+      else return false
+    }
+
+    while(true) {
+      let result = playGame()
+      if(!result) break
+    }
+
+  </script>
+  </body>
+</html>
